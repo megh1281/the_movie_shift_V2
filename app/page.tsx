@@ -60,8 +60,19 @@ export default function Home() {
     return () => observer.disconnect();
   }, [data]);
 
+  const coreDatasetKeys = [
+    "annual_movie_count",
+    "genre_year",
+    "genre_summary",
+    "runtime_year",
+    "genre_runtime_year",
+    "financial_year",
+    "spearman_pairs",
+    "period_comparison",
+    "data_quality",
+  ];
   const verifiedDatasetsCount = data
-    ? Object.values(data.loadedFiles).filter(Boolean).length
+    ? coreDatasetKeys.filter((k) => data.loadedFiles[k]).length
     : 0;
 
   return (
